@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kase Wulhynek · Portfólio</title>
+<meta name="description" content="Portfólio da Kase Wulhynek: sistemas web, automações e integrações em Laravel, JavaScript e Python.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#FFC9EC; --grid:rgba(255,255,255,.55); --pageink:#2B1B3D;
+  --ink:#2B1B3D; --lime:#A6F31D; --pink:#FF3DA5; --cyan:#6EDDE8; --lilac:#B39BE8; --yellow:#FAF49A; --white:#FFFFFF;
+}
+:root[data-theme="dark"]{ --page:#2D2266; --grid:rgba(255,255,255,.08); --pageink:#FFF4FB; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --page:#2D2266; --grid:rgba(255,255,255,.08); --pageink:#FFF4FB; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--page);color:var(--pageink);font:18px/1.55 "Fredoka",system-ui,sans-serif;overflow-x:hidden;
+  background-image:linear-gradient(var(--grid) 2px,transparent 2px),linear-gradient(90deg,var(--grid) 2px,transparent 2px);background-size:36px 36px}
+a{color:inherit}
+.px{font-family:"Pixelify Sans","Fredoka",monospace}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px;position:relative}
+svg{display:block}
+.sprite svg{width:100%;height:auto}
+
+/* céu com nuvens */
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cloud{position:absolute;left:0;width:150px;opacity:.95;animation:drift linear infinite;will-change:transform}
+.cloud:nth-child(1){top:12%;width:170px;animation-duration:70s;animation-delay:-20s}
+.cloud:nth-child(2){top:38%;width:120px;animation-duration:95s;animation-delay:-60s}
+.cloud:nth-child(3){top:64%;width:190px;animation-duration:80s;animation-delay:-5s}
+.cloud:nth-child(4){top:84%;width:130px;animation-duration:110s;animation-delay:-45s}
+:root[data-theme="dark"] .cloud{opacity:.18}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cloud{opacity:.18}}
+@keyframes drift{from{transform:translateX(-25vw)}to{transform:translateX(110vw)}}
+main,nav,footer,.band{position:relative;z-index:1}
+
+/* janela retrô */
+.win{background:var(--white);color:var(--ink);border:3px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink);overflow:hidden}
+.win>.bar{display:flex;align-items:center;gap:10px;padding:7px 12px;background:var(--cyan);border-bottom:3px solid var(--ink);font-family:"Pixelify Sans",monospace;font-weight:600;font-size:16px}
+.win>.bar span{margin-right:auto}
+.win>.bar i{font-style:normal;font-size:14px;line-height:1;width:20px;height:20px;border:2px solid var(--ink);border-radius:5px;display:grid;place-items:center;background:var(--white)}
+.win.pk>.bar{background:var(--pink);color:#fff}
+.win.lm>.bar{background:var(--lime)}
+.win.ll>.bar{background:var(--lilac)}
+.win.yl>.bar{background:var(--yellow)}
+.win .body{padding:22px}
+
+/* nav */
+nav{position:sticky;top:12px;z-index:20;max-width:1060px;margin:12px auto 0;padding:0 16px}
+nav .win{border-radius:999px;box-shadow:4px 4px 0 var(--ink)}
+nav .in{display:flex;align-items:center;gap:4px;padding:6px 8px 6px 20px}
+nav b{font-family:"Pixelify Sans",monospace;font-size:20px;margin-right:auto}
+nav a{text-decoration:none;font-weight:600;font-size:15px;padding:5px 13px;border-radius:999px}
+nav a:hover{background:var(--lime)}
+nav button{font:inherit;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:16px}
+nav button:hover{background:var(--lime)}
+
+/* títulos */
+.t{font-family:"Fredoka",sans-serif;font-weight:700;color:var(--lime);-webkit-text-stroke:9px var(--ink);paint-order:stroke fill;text-shadow:4px 5px 0 var(--ink);line-height:.95;letter-spacing:.01em;margin:0}
+h2.t{font-size:clamp(34px,6vw,56px);margin:0 0 6px}
+.pill{display:inline-block;background:var(--pink);color:#fff;border:3px solid var(--ink);border-radius:10px;padding:2px 14px;font-family:"Pixelify Sans",monospace;font-weight:600;font-size:15px;box-shadow:3px 3px 0 var(--ink)}
+.sub{margin:12px 0 28px;font-weight:500}
+
+/* hero */
+.hero{padding:44px 0 20px}
+.hero .body{display:grid;gap:18px;align-items:center;padding:28px}
+@media(min-width:840px){.hero .body{grid-template-columns:1fr 1.05fr}}
+.hello{font-family:"Pixelify Sans",monospace;font-size:20px;font-weight:600;margin:0}
+.hero h1{font-size:clamp(70px,13vw,140px);margin:6px 0 10px}
+.typed{font-family:"Pixelify Sans",monospace;font-weight:600;font-size:clamp(20px,3vw,26px);margin:0 0 14px;min-height:1.4em}
+.typed b{background:var(--yellow);padding:0 8px;border:2px solid var(--ink);border-radius:6px}
+.typed b:empty{padding:0;border:0;background:none}
+.caret{display:inline-block;width:10px;height:1em;background:var(--pink);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{margin:0 0 22px;font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:11px 22px;border:3px solid var(--ink);border-radius:12px;background:var(--white);color:var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.p{background:var(--pink);color:#fff}
+.btn.l{background:var(--lime)}
+.scene{background:linear-gradient(#FFE3F5,#FFD0EE);border:3px solid var(--ink);border-radius:12px;overflow:hidden}
+
+/* animações da cena */
+.girl{animation:bob .9s steps(2) infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.eyeblink{animation:eb 4s steps(1) infinite;opacity:0}
+@keyframes eb{0%,93%,100%{opacity:0}94%,98%{opacity:1}}
+.btnblink{animation:bb .5s steps(1) infinite}
+@keyframes bb{50%{opacity:0}}
+.hf{animation:fall 2.8s linear infinite}
+@keyframes fall{from{transform:translateY(-8px)}to{transform:translateY(30px)}}
+.cat{animation:run 4s steps(14) infinite alternate}
+@keyframes run{from{transform:translateX(2px)}to{transform:translateX(34px)}}
+.bubble{transform-box:fill-box;transform-origin:50% 100%;animation:pop 3s ease-in-out infinite}
+@keyframes pop{0%,55%,100%{transform:scale(0)}62%,92%{transform:scale(1)}}
+.tw{transform-box:fill-box;transform-origin:center;animation:tw 1.8s steps(3) infinite}
+@keyframes tw{0%,100%{transform:scale(.4);opacity:.5}50%{transform:scale(1);opacity:1}}
+.up{animation:up 3.2s linear infinite;opacity:0}
+@keyframes up{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-70px);opacity:0}}
+.score{animation:bb 1s steps(1) infinite}
+
+/* faixa */
+.band{margin:34px 0 8px;background:var(--ink);color:var(--lime);border-block:3px solid var(--ink);overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg)}
+.band div{display:inline-block;padding:10px 0;font-family:"Pixelify Sans",monospace;font-weight:700;font-size:22px;animation:slide 30s linear infinite}
+.band span{margin:0 16px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:52px 0 6px}
+
+/* sobre */
+.about{display:grid;gap:26px;align-items:center}
+@media(min-width:760px){.about{grid-template-columns:300px 1fr}}
+.polaroid{background:#fff;border:3px solid var(--ink);padding:12px 12px 36px;box-shadow:6px 6px 0 var(--ink);transform:rotate(-3deg);position:relative;justify-self:center;max-width:300px;transition:transform .2s}
+.polaroid:hover{transform:rotate(2deg) scale(1.03)}
+.polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border:3px solid var(--ink);display:block}
+.polaroid em{position:absolute;bottom:7px;left:0;right:0;text-align:center;font-family:"Pixelify Sans",monospace;font-style:normal;font-weight:600;font-size:16px}
+.tape{position:absolute;top:-14px;left:50%;width:90px;height:26px;margin-left:-45px;background:var(--lime);border:3px solid var(--ink);transform:rotate(3deg);opacity:.95}
+.dialog{background:var(--ink);color:#fff;border:3px solid var(--ink);border-radius:12px;padding:18px 20px;box-shadow:0 0 0 3px var(--cyan) inset;margin-top:18px;font-family:"Pixelify Sans",monospace;font-size:20px;line-height:1.35}
+.dialog small{color:var(--lime);display:block;font-size:14px;margin-bottom:4px}
+.dialog .arrow{display:inline-block;color:var(--pink);animation:bb .7s steps(1) infinite}
+.lvl{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:"Pixelify Sans",monospace;font-weight:600}
+.xp{flex:1;min-width:140px;height:20px;border:3px solid var(--ink);border-radius:6px;background:#fff;overflow:hidden}
+.xp i{display:block;height:100%;width:60%;background:repeating-linear-gradient(90deg,var(--pink) 0 8px,#FF7DC2 8px 16px);animation:xp 3s ease-in-out infinite alternate}
+@keyframes xp{from{width:55%}to{width:68%}}
+
+/* projetos */
+.grid{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+.card:hover{transform:translate(-3px,-3px) rotate(-.8deg);box-shadow:10px 10px 0 var(--ink)}
+.card .body{display:flex;flex-direction:column;gap:12px;flex:1}
+.ico{width:76px;padding:10px;border:3px solid var(--ink);border-radius:14px;background:var(--yellow);animation:wig 2.4s ease-in-out infinite}
+.card:hover .ico{animation-duration:.5s}
+.c2 .ico{background:var(--cyan)}.c3 .ico{background:var(--lime)}
+@keyframes wig{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-3px)}}
+.card h3{font-size:26px;margin:0;line-height:1.1}
+.card p{margin:0;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:6px}
+.chips span{border:2px solid var(--ink);border-radius:8px;padding:0 10px;font-family:"Pixelify Sans",monospace;font-size:14px;font-weight:600;background:#FFE8F6}
+.go{align-self:flex-start;font-family:"Pixelify Sans",monospace;font-weight:700;text-decoration:none;background:var(--ink);color:var(--lime);padding:4px 14px;border-radius:8px}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.go:hover{background:var(--pink);color:#fff}
+
+/* skills */
+.items{display:flex;flex-wrap:wrap;gap:12px}
+.items div{font-family:"Pixelify Sans",monospace;font-weight:600;font-size:18px;border:3px solid var(--ink);border-radius:12px;padding:5px 16px;box-shadow:3px 3px 0 var(--ink);color:var(--ink);transition:transform .12s}
+.items div:hover{transform:translateY(-4px) rotate(-3deg)}
+.items div:nth-child(4n+1){background:var(--lime)}
+.items div:nth-child(4n+2){background:var(--cyan)}
+.items div:nth-child(4n+3){background:var(--yellow)}
+.items div:nth-child(4n){background:#FFA6D8}
+.edu{margin-top:20px;font-weight:500}
+
+/* contato */
+.contact .body{text-align:center;padding:30px 22px}
+.contact h2{margin-bottom:6px}
+.contact p{margin:0 0 22px;font-weight:500}
+.fields{display:grid;gap:14px;max-width:320px;margin:0 auto}
+.field{display:flex;align-items:center;justify-content:center;gap:12px;font-family:"Pixelify Sans",monospace;font-size:22px;text-decoration:none;border:3px solid var(--ink);border-radius:10px;background:var(--lilac);padding:8px 14px;font-weight:600;text-align:left;box-shadow:3px 3px 0 var(--ink);transition:transform .1s}
+.field:hover{transform:translate(-2px,-2px);background:#C9B6F5}
+.field b{font-family:"Pixelify Sans",monospace;background:var(--lilac);border:2px solid var(--ink);border-radius:6px;padding:0 10px}
+.cursor{width:28px;margin:18px auto 0;animation:cur 1.6s ease-in-out infinite}
+@keyframes cur{50%{transform:translate(10px,-6px)}}
+
+footer{text-align:center;padding:36px 16px 48px;font-family:"Pixelify Sans",monospace;font-weight:600}
+:focus-visible{outline:4px solid var(--pink);outline-offset:3px}
+@media(max-width:560px){nav a{display:none}.win .body{padding:16px}.hero .body{padding:18px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.eyeblink{opacity:0}.bubble{transform:scale(1)}}
+</style>
+</head>
+<body>
+
+<div class="sky" aria-hidden="true">
+  <div class="cloud sprite" data-s="cloud" data-px="6"></div>
+  <div class="cloud sprite" data-s="cloud" data-px="6"></div>
+  <div class="cloud sprite" data-s="cloud" data-px="6"></div>
+  <div class="cloud sprite" data-s="cloud" data-px="6"></div>
+</div>
+
+<nav><div class="win"><div class="in">
+  <b>♥ kase.exe</b>
+  <a href="#sobre">Sobre</a>
+  <a href="#projetos">Projetos</a>
+  <a href="#habilidades">Skills</a>
+  <a href="#contato">Contato</a>
+  <button id="theme" aria-label="Alternar modo dia e noite">☾</button>
+</div></div></nav>
+
+<main class="wrap">
+
+  <header class="hero">
+    <div class="win">
+      <div class="bar"><span>oi_eu_sou_a_kase.exe</span><i>–</i><i>□</i><i>✕</i></div>
+      <div class="body">
+        <div>
+          <p class="hello">oi! eu sou a</p>
+          <h1 class="t">KASE</h1>
+          <p class="typed"><b id="typed"></b><span class="caret"></span></p>
+          <p class="lead">Desenvolvedora apaixonada por transformar ideias em código que funciona, com Laravel, JavaScript e Python. Sempre aprendendo algo novo.</p>
+          <div class="cta">
+            <a class="btn p" href="#projetos">Ver projetos ▶</a>
+            <a class="btn l" href="https://github.com/Saakyy" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="scene" id="scene" role="img" aria-label="Ilustração em pixel art de uma garota de cabelo vermelho jogando videogame"></div>
+      </div>
+    </div>
+  </header>
+
+</main>
+
+<div class="band" aria-hidden="true"><div id="band"></div></div>
+
+<main class="wrap">
+
+  <section id="sobre">
+    <span class="pill">▶ fase 1</span>
+    <h2 class="t" style="margin-top:12px">Sobre mim</h2>
+    <p class="sub"></p>
+    <div class="win lm">
+      <div class="bar"><span>sobre_mim.png</span><i>–</i><i>□</i><i>✕</i></div>
+      <div class="body about">
+        <figure class="polaroid" style="margin:0">
+          <div class="tape"></div>
+          <img src="img/kase.jpg" alt="Foto da Kase de cabelo vermelho e blazer escuro">
+          <em>kase ♥</em>
+        </figure>
+        <div>
+          <p style="margin:0;font-weight:500">Sou apaixonada por tecnologia e por aprender. Para mim, o trabalho deve ser fonte de realização e crescimento profissional, e é por isso que estou sempre atrás de novos desafios.</p>
+          <div class="dialog">
+            <small>★ LEMA DA PERSONAGEM</small>
+            “Se você pode sonhar, pode realizar.” <span class="arrow">▼</span>
+          </div>
+          <div class="lvl"><span>LEVEL UP:</span><div class="xp"><i></i></div></div>
+          <p class="edu">🎓 Cursando <b>Análise e Desenvolvimento de Sistemas</b> na Unicesumar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <span class="pill">▶ fase 2</span>
+    <h2 class="t" style="margin-top:12px">Projetos</h2>
+    <p class="sub">Algumas das fases que já zerei.</p>
+    <div class="grid">
+
+      <article class="win card c1">
+        <div class="bar"><span>brazilmount.exe</span><i>✕</i></div>
+        <div class="body">
+          <div class="ico sprite" data-s="mount" data-px="8"></div>
+          <h3>Brazil Mount</h3>
+          <p>Painel operacional para gestão de pedidos, com login de operadores, filtros por período e status (pendente, andamento, finalizados e cancelados) e fila do time com operadores online e offline.</p>
+          <div class="chips"><span>Painel web</span><span>Login de operadores</span><span>Fila do time</span><span>Vercel</span></div>
+          <a class="go" href="https://brazilmount.vercel.app/" target="_blank" rel="noopener">VER PROJETO ↗</a>
+        </div>
+      </article>
+
+      <article class="win pk card c2">
+        <div class="bar"><span>agenda_ethos.exe</span><i style="color:var(--ink)">✕</i></div>
+        <div class="body">
+          <div class="ico sprite" data-s="cal" data-px="8"></div>
+          <h3>Agenda Ethos</h3>
+          <p>Agenda de atividades com calendário, login, criação e exclusão de compromissos e tema claro/escuro. Front-end em JavaScript puro e API serverless com armazenamento em blob, na Vercel.</p>
+          <div class="chips"><span>JavaScript</span><span>Vercel Functions</span><span>Vercel Blob</span><span>CSS</span></div>
+          <a class="go" href="https://github.com/Saakyy/Ethos-Agenda" target="_blank" rel="noopener">VER CÓDIGO ↗</a>
+        </div>
+      </article>
+
+      <article class="win ll card c3">
+        <div class="bar"><span>portfolio.exe</span><i>✕</i></div>
+        <div class="body">
+          <div class="ico sprite" data-s="sun" data-px="8"></div>
+          <h3>Meu primeiro portfólio</h3>
+          <p>Meu primeiro site, feito do zero com HTML e CSS: páginas de sobre mim, projetos, habilidades e contato, com menu para navegar entre elas. Foi onde comecei a mostrar meus trabalhos.</p>
+          <div class="chips"><span>HTML</span><span>CSS</span><span>GitHub Pages</span></div>
+          <div class="acts">
+            <a class="go" href="https://saakyy.github.io/easy-portifolio/" target="_blank" rel="noopener">VER PROJETO ↗</a>
+            <a class="go" href="https://github.com/Saakyy/easy-portifolio" target="_blank" rel="noopener">VER CÓDIGO ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <span class="pill">▶ fase 3</span>
+    <h2 class="t" style="margin-top:12px">Inventário</h2>
+    <p class="sub">Os itens que levo na mochila.</p>
+    <div class="win yl">
+      <div class="bar"><span>habilidades.exe</span><i>–</i><i>□</i><i>✕</i></div>
+      <div class="body">
+        <div class="items">
+          <div>PHP</div><div>Laravel</div><div>JavaScript</div><div>Python</div><div>HTML</div><div>CSS</div>
+          <div>APIs REST</div><div>MySQL</div><div>LDAP / Active Directory</div><div>PowerShell</div><div>Git</div><div>Vercel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="padding-bottom:30px">
+    <div class="win pk contact">
+      <div class="bar"><span>contato.exe</span><i style="color:var(--ink)">✕</i></div>
+      <div class="body">
+        <h2 class="t">BORA CONVERSAR?</h2>
+        <p style="margin-top:18px">Tem uma vaga, um projeto ou só quer trocar uma ideia sobre código? Me chama!</p>
+        <div class="fields">
+          <a class="field" href="https://github.com/Saakyy" target="_blank" rel="noopener">GitHub</a>
+          
+          <a class="field" href="https://www.linkedin.com/in/kase-wulhynek-a94025307/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="cursor sprite" data-s="cursor" data-px="3" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>feito com ♥ e muito café · © <span id="y"></span> Kase Wulhynek</footer>
+
+<script>
+/* ---------- renderizador de pixel art ---------- */
+const SPR={
+  cloud:{pal:{X:'#FFFFFF',c:'#CFE7FF'},rows:[
+    "........XXXXXX",
+    "......XXXXXXXXXX",
+    "..XXXXXXXXXXXXXXXXXX",
+    ".XXXXXXXXXXXXXXXXXXXXX",
+    "XXXXXXXXXXXXXXXXXXXXXXX",
+    "cccccccccccccccccccccc"]},
+  mount:{pal:{X:'#2F6BFF',D:'#1B3FA8',W:'#FFFFFF'},rows:[
+    "....W....","...WWW...","..WXWXW..","..XXXXXD.",".XXXXXXDD","XXXXXXXXD","XXXXXXXXX","DDDDDDDDD"]},
+  cal:{pal:{X:'#FF3DA5',W:'#FFFFFF',D:'#B39BE8',K:'#2B1B3D'},rows:[
+    ".K.....K.","XXXXXXXXX","XXXXXXXXX","WWWWWWWWW","WDWDWDWDW","WWWWWWWWW","WDWDWKWDW","WWWWWWWWW","WDWDWDWDW"]},
+  sun:{pal:{O:'#FFB000',R:'#FFD23F'},rows:[
+    "....R....","R...R...R","..OOOOO..",".OOOOOOO.","ROOOOOOOR",".OOOOOOO.","..OOOOO..","R...R...R","....R...."]},
+  star:{pal:{X:'#FFFFFF',Y:'#FFD23F'},rows:[
+    "...X...","...X...","..XXX..","XXXXXXX","..XXX..","...X...","...X..."]},
+  heart:{pal:{X:'#FF3DA5'},rows:[".XX.XX.","XXXXXXX","XXXXXXX",".XXXXX.","..XXX..","...X..."]},
+  cat:{pal:{X:'#FFFFFF',O:'#2B1B3D',P:'#FF9EC4'},rows:["X...X","XXXXX","XOXOX","XXPXX",".XXX."]},
+  cursor:{pal:{X:'#2B1B3D',W:'#FFFFFF'},rows:[
+    "X.........","XX........","XWX.......","XWWX......","XWWWX.....","XWWWWX....","XWWWWWX...","XWWWWWWX..","XWWWXXXXX.","XWXWX.....","XX.XWX....","X..XWX....","....XWX...","....XX...."]},
+  girl:{pal:{R:'#D81E4F',r:'#9C1139',S:'#FFDCCB',E:'#2B1B3D',P:'#FF9EC4',M:'#E0457A',T:'#B39BE8',H:'#6EDDE8',G:'#FFFFFF',W:'#B8B8D8',B:'#FF3DA5'},rows:[
+    ".....rRRRRRRr.....",
+    "....RRRRRRRRRR....",
+    "...RRRRRRRRRRRR...",
+    "..RRRRRRRRRRRRRR..",
+    "..RRRRRRRRRRRRRR..",
+    "..RRSSSSSSSSSSRR..",
+    ".HRRSSSSSSSSSSRRH.",
+    ".HHRSEESSSSEESRHH.",
+    ".HHRSEESSSSEESRHH.",
+    ".HHRSPSSSSSSPSRHH.",
+    ".HHRSSSSMMSSSSRHH.",
+    "..RRRSSSSSSSSRRR..",
+    "..RRR.SSSSSS.RRR..",
+    "..RRTTTTTTTTTTRR..",
+    ".RRRTTTTTTTTTTRRR.",
+    ".RRTTTTTTTTTTTTRR.",
+    ".RRTTSSGGGGSSTTRR.",
+    ".RRTTGGWGGBGGTTRR.",
+    ".RR.TTTTTTTTTT.RR.",
+    "..R.TTTTTTTTTT.R.."]}
+};
+function draw(name,px,extra=''){
+  const {rows,pal}=SPR[name], w=Math.max(...rows.map(r=>r.length)); let o='';
+  rows.forEach((r,y)=>{let x=0;while(x<w){const c=r[x]||'.';if(c==='.'){x++;continue}let e=x+1;while(e<w&&(r[e]||'.')===c)e++;
+    o+=`<rect x="${x*px}" y="${y*px}" width="${(e-x)*px}" height="${px}" fill="${pal[c]}"/>`;x=e}});
+  return {svg:o+extra,w:w*px,h:rows.length*px};
+}
+document.querySelectorAll('.sprite[data-s]').forEach(el=>{
+  const d=draw(el.dataset.s,+el.dataset.px);
+  el.innerHTML=`<svg viewBox="0 0 ${d.w} ${d.h}" shape-rendering="crispEdges" aria-hidden="true">${d.svg}</svg>`;
+});
+
+/* ---------- cena do hero ---------- */
+(function(){
+  const px=9, g=draw('girl',px);
+  const blink=[[5,7],[6,7],[11,7],[12,7]].map(([c,r])=>`<rect x="${c*px}" y="${r*px}" width="${px}" height="${px}" fill="#FFDCCB"/>`).join('');
+  const btn=`<rect class="btnblink" x="${10*px}" y="${17*px}" width="${px}" height="${px}" fill="#FFD23F"/>`;
+  const heart=(x,y,cls,delay)=>`<g class="${cls}" style="animation-delay:${delay}s" transform="translate(${x} ${y})">${draw('heart',3).svg}</g>`;
+  const star=(x,y,d)=>`<g transform="translate(${x} ${y})"><g class="tw" style="animation-delay:${d}s">${draw('star',3).svg}</g></g>`;
+  const game=`
+    <svg x="221" y="76" width="138" height="108" viewBox="0 0 46 36" shape-rendering="crispEdges">
+      <rect width="46" height="36" fill="#3A2A6E"/>
+      <rect x="6" y="9" width="1" height="1" fill="#fff"/><rect x="38" y="14" width="1" height="1" fill="#fff"/><rect x="24" y="6" width="1" height="1" fill="#FFD23F"/><rect x="14" y="20" width="1" height="1" fill="#6EDDE8"/>
+      <text class="score" x="2" y="5" font-family="Pixelify Sans,monospace" font-size="4" fill="#A6F31D">SCORE 0420</text>
+      <g class="hf" style="animation-delay:0s" transform="translate(6 6)">${draw('heart',1).svg}</g>
+      <g class="hf" style="animation-delay:-1s" transform="translate(21 4)">${draw('heart',1).svg}</g>
+      <g class="hf" style="animation-delay:-1.9s" transform="translate(35 8)">${draw('heart',1).svg}</g>
+      <rect x="0" y="33" width="46" height="3" fill="#A6F31D"/>
+      <g class="cat" transform="translate(0 28)"><g>${draw('cat',1).svg}</g></g>
+      <polygon points="0,0 20,0 0,26" fill="#fff" opacity=".09"/>
+    </svg>`;
+  const ups=[[110,70,0],[135,80,1.1],[90,86,2.1]].map(([x,y,d])=>`<g class="up" style="animation-delay:${d}s" transform="translate(${x} ${y})">${draw('heart',2).svg}</g>`).join('');
+  document.getElementById('scene').innerHTML=`
+  <svg viewBox="0 0 400 300" shape-rendering="crispEdges" style="width:100%;height:auto">
+    ${star(12,24,0)}${star(188,20,.6)}${star(372,30,1.2)}${star(180,248,.9)}
+    <g class="girl" transform="translate(14 56)">${g.svg}${`<g class="eyeblink">${blink}</g>`}${btn}</g>
+    ${ups}
+    <g class="bubble" transform="translate(150 22)">
+      <rect x="0" y="0" width="52" height="30" fill="#fff" stroke="#2B1B3D" stroke-width="3"/>
+      <polygon points="8,30 8,42 22,30" fill="#fff" stroke="#2B1B3D" stroke-width="3"/><rect x="5" y="28" width="20" height="5" fill="#fff"/>
+      <text x="26" y="22" text-anchor="middle" font-family="Pixelify Sans,monospace" font-weight="700" font-size="18" fill="#FF3DA5">GG!</text>
+    </g>
+    <rect x="262" y="198" width="54" height="30" fill="#CFCBE8" stroke="#2B1B3D" stroke-width="4"/>
+    <rect x="205" y="60" width="170" height="140" fill="#F4F1FF" stroke="#2B1B3D" stroke-width="4"/>
+    <rect x="217" y="72" width="146" height="116" fill="#2B1B3D"/>
+    ${game}
+    <circle cx="352" cy="194" r="3" fill="#FF3DA5"/><circle cx="342" cy="194" r="3" fill="#A6F31D"/>
+    <rect x="0" y="228" width="400" height="18" fill="#FF3DA5" stroke="#2B1B3D" stroke-width="4"/>
+    <rect x="0" y="246" width="400" height="54" fill="#B39BE8" stroke="#2B1B3D" stroke-width="4"/>
+    <rect x="330" y="214" width="40" height="14" fill="#6EDDE8" stroke="#2B1B3D" stroke-width="3"/>
+  </svg>`;
+})();
+
+/* ---------- faixa ---------- */
+(function(){
+  const items=['LARAVEL','JAVASCRIPT','PYTHON','PHP','APIs','CSS','VERCEL','POWERSHELL','LDAP'];
+  const s=items.map(t=>`<span>★ ${t}</span>`).join('');
+  document.getElementById('band').innerHTML=s+s+s+s;
+})();
+
+/* ---------- texto digitando ---------- */
+(function(){
+  const el=document.getElementById('typed'),words=['sistemas web','automações','integrações','APIs'];
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=words[0];return}
+  let w=0,i=0,del=false;
+  (function tick(){
+    const word=words[w];
+    el.textContent=word.slice(0,i);
+    if(!del&&i===word.length){del=true;return setTimeout(tick,1400)}
+    if(del&&i===0){del=false;w=(w+1)%words.length}
+    i+=del?-1:1;
+    setTimeout(tick,del?45:90);
+  })();
+})();
+
+/* ---------- tema e rodapé ---------- */
+document.getElementById('y').textContent=new Date().getFullYear();
+const root=document.documentElement,tb=document.getElementById('theme');
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+const sync=()=>{tb.textContent=isDark()?'☀':'☾'};
+try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t}catch(e){}
+sync();
+tb.onclick=()=>{root.dataset.theme=isDark()?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){};sync()};
+</script>
+</body>
+</html>
