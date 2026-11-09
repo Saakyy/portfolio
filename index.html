@@ -390,24 +390,24 @@ document.querySelectorAll('.sprite[data-s]').forEach(el=>{
       <rect width="46" height="36" fill="#3A2A6E"/>
       <rect x="6" y="9" width="1" height="1" fill="#fff"/><rect x="38" y="14" width="1" height="1" fill="#fff"/><rect x="24" y="6" width="1" height="1" fill="#FFD23F"/><rect x="14" y="20" width="1" height="1" fill="#6EDDE8"/>
       <text class="score" x="2" y="5" font-family="Pixelify Sans,monospace" font-size="4" fill="#A6F31D">SCORE 0420</text>
-      <g class="hf" style="animation-delay:0s" transform="translate(6 6)">${draw('heart',1).svg}</g>
-      <g class="hf" style="animation-delay:-1s" transform="translate(21 4)">${draw('heart',1).svg}</g>
-      <g class="hf" style="animation-delay:-1.9s" transform="translate(35 8)">${draw('heart',1).svg}</g>
+      <g transform="translate(6 6)"><g class="hf" style="animation-delay:0s">${draw('heart',1).svg}</g></g>
+      <g transform="translate(21 4)"><g class="hf" style="animation-delay:-1s">${draw('heart',1).svg}</g></g>
+      <g transform="translate(35 8)"><g class="hf" style="animation-delay:-1.9s">${draw('heart',1).svg}</g></g>
       <rect x="0" y="33" width="46" height="3" fill="#A6F31D"/>
-      <g class="cat" transform="translate(0 28)"><g>${draw('cat',1).svg}</g></g>
+      <g transform="translate(0 28)"><g class="cat">${draw('cat',1).svg}</g></g>
       <polygon points="0,0 20,0 0,26" fill="#fff" opacity=".09"/>
     </svg>`;
-  const ups=[[110,70,0],[135,80,1.1],[90,86,2.1]].map(([x,y,d])=>`<g class="up" style="animation-delay:${d}s" transform="translate(${x} ${y})">${draw('heart',2).svg}</g>`).join('');
+  const ups=[[110,70,0],[135,80,1.1],[90,86,2.1]].map(([x,y,d])=>`<g transform="translate(${x} ${y})"><g class="up" style="animation-delay:${d}s">${draw('heart',2).svg}</g></g>`).join('');
   document.getElementById('scene').innerHTML=`
   <svg viewBox="0 0 400 300" shape-rendering="crispEdges" style="width:100%;height:auto">
     ${star(12,24,0)}${star(188,20,.6)}${star(372,30,1.2)}${star(180,248,.9)}
-    <g class="girl" transform="translate(14 56)">${g.svg}${`<g class="eyeblink">${blink}</g>`}${btn}</g>
+    <g transform="translate(14 56)"><g class="girl">${g.svg}${`<g class="eyeblink">${blink}</g>`}${btn}</g></g>
     ${ups}
-    <g class="bubble" transform="translate(150 22)">
+    <g transform="translate(150 22)"><g class="bubble">
       <rect x="0" y="0" width="52" height="30" fill="#fff" stroke="#2B1B3D" stroke-width="3"/>
       <polygon points="8,30 8,42 22,30" fill="#fff" stroke="#2B1B3D" stroke-width="3"/><rect x="5" y="28" width="20" height="5" fill="#fff"/>
       <text x="26" y="22" text-anchor="middle" font-family="Pixelify Sans,monospace" font-weight="700" font-size="18" fill="#FF3DA5">GG!</text>
-    </g>
+    </g></g>
     <rect x="262" y="198" width="54" height="30" fill="#CFCBE8" stroke="#2B1B3D" stroke-width="4"/>
     <rect x="205" y="60" width="170" height="140" fill="#F4F1FF" stroke="#2B1B3D" stroke-width="4"/>
     <rect x="217" y="72" width="146" height="116" fill="#2B1B3D"/>
