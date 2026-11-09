@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>*{margin:0}body{width:4800px;height:4200px;overflow:hidden;background:#fff}
+#s{display:grid;grid-template-columns:repeat(4,1200px);grid-auto-rows:420px}svg{display:block}</style></head><body>
+<div id="s"></div><script src="lib.js"></script>
+<script>
+const N=40,s=document.getElementById('s');
+let h='';for(let i=0;i<N;i++){h+='<div>'+frame(i/N,1200,420)+'</div>'}
+s.innerHTML=h;
+</script></body></html>
